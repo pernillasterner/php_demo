@@ -38,3 +38,6 @@ $books = [
 $filteredBooks = array_filter($books, function ($book) {
     return $book['releaseYear'] > 2000;
 });
+
+
+require "index.view.php";
