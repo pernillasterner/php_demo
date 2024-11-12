@@ -13,22 +13,22 @@
     <h1>Recommended Books</h1>
 
     <?php
-    $books = ["Book 1", "Book 2", "Book 3"];
+    $books = [[
+        'name' => 'Book 1',
+        'author' => 'Author 1',
+        'url' => 'exemple1.com'
+    ], [
+        'name' => 'Book 2',
+        'author' => 'Author 2',
+        'url' => 'exemple2.com'
+    ]];
 
     ?>
 
     <ul>
-        <?php
-        // foreach ($books as $book) {
-        //     echo "<li>{$book}</li>";
-        // }
-        ?>
-
-        <?php
-        foreach ($books as $book) : ?>
-            <li><?= $book; ?></li>
+        <?php foreach ($books as $book) : ?>
+            <li><?= $book['name']; ?></li>
         <?php endforeach; ?>
-
     </ul>
 </body>
 
