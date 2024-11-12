@@ -10,21 +10,26 @@
 
 <body>
 
-    <?php
-    $name = "Dark Matter";
-    $read = false;
+    <h1>Recommended Books</h1>
 
-    if ($read) {
-        $message = "You have read $name";
-    } else {
-        $message = "You have NOT read $name";
-    }
+    <?php
+    $books = ["Book 1", "Book 2", "Book 3"];
+
     ?>
 
-    <h1>
-        <?php echo $message; ?>
-        <?= $message; ?>
-    </h1>
+    <ul>
+        <?php
+        // foreach ($books as $book) {
+        //     echo "<li>{$book}</li>";
+        // }
+        ?>
+
+        <?php
+        foreach ($books as $book) : ?>
+            <li><?= $book; ?></li>
+        <?php endforeach; ?>
+
+    </ul>
 </body>
 
 </html>
