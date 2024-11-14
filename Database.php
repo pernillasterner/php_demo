@@ -20,13 +20,13 @@ class Database
         ]);
     }
 
-    public function query($query)
+    public function query($query, $params)
     {
 
         $statement = $this->connection->prepare($query);
 
         // Execute the code
-        $statement->execute();
+        $statement->execute($params);
 
         // Fetch the results and remove duplicate array
         return $statement;
