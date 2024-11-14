@@ -37,6 +37,6 @@ class Database
 $db = new Database();
 
 // Calling the query method
-$posts = $db->query("select * from posts where id = 1")->fetch(PDO::FETCH_ASSOC);
+$posts = $db->query("select * from posts")->fetchAll(PDO::FETCH_ASSOC);
 
 dd($posts);
