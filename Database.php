@@ -6,7 +6,7 @@ class Database
     public $connection;
 
     // When and instance is constructed. First thing to run
-    public function __construct($config)
+    public function __construct($config, $username = 'root', $password = '')
     {
 
         // Setup connection to the MySQL database using PDO (PHP Data Objects).
@@ -15,7 +15,7 @@ class Database
 
 
         // Initialize the PDO instance to connect to the database
-        $this->connection = new PDO($dsn, 'root', '', [
+        $this->connection = new PDO($dsn, $username, $password, [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
     }
