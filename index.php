@@ -4,6 +4,19 @@ require 'functions.php';
 // require 'router.php';
 
 
+// Connect to the database, and execute a query
+class Database
+{
+
+    public function query() {}
+}
+
+// New instance of the Database class
+$db = new Database();
+
+// Calling the query method
+$db->query();
+
 // Setup connection to the MySQL database using PDO (PHP Data Objects).
 // Data Source Name (DNS) specifies the connection details for MySQL: Like a connection string
 $dns = "mysql:host=localhost;port=3306;dbname=myapp;charset=utf8mb4";
