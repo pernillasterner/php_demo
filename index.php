@@ -7,31 +7,36 @@ require 'functions.php';
 // Connect to the database, and execute a query
 class Database
 {
+    public $connection;
 
-    public function query() {}
+    // When and instance is constructed. First thing to run
+    public function __construct()
+    {
+        // Setup connection to the MySQL database using PDO (PHP Data Objects).
+        // Data Source Name (DNS) specifies the connection details for MySQL: Like a connection string
+        $dns = "mysql:host=localhost;port=3306;dbname=myapp;charset=utf8mb4";
+
+        // Initialize the PDO instance to connect to the database
+        $this->connection = new PDO($dns, 'root');
+    }
+
+    public function query($query)
+    {
+
+        $statement = $this->connection->prepare($query);
+
+        // Execute the code
+        $statement->execute();
+
+        // Fetch the results and remove duplicate array
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
 }
 
-// New instance of the Database class
+// Initialize a new instance of a class
 $db = new Database();
 
 // Calling the query method
-$db->query();
+$posts = $db->query("select * from posts where id = 1");
 
-// Setup connection to the MySQL database using PDO (PHP Data Objects).
-// Data Source Name (DNS) specifies the connection details for MySQL: Like a connection string
-$dns = "mysql:host=localhost;port=3306;dbname=myapp;charset=utf8mb4";
-
-// Initialize the PDO instance to connect to the database
-$pdo = new PDO($dns, 'root');
-
-$statement = $pdo->prepare("select * from posts");
-
-// Execute the code
-$statement->execute();
-
-// Fetch all posts and remove duplicate array
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($posts as $post) {
-    echo "<li>" . $post['title'] . "</li>";
-}
+dd($posts);
