@@ -9,7 +9,7 @@ A basic project demonstrating how to build a simple PHP application with partial
 To separate the URI path and query parameters in PHP, you can use the `parse_url` function.
 
 ```php
-<?php
+
 $uri = "/contact?name=johndoe";
 print_r(parse_url($uri));
 
@@ -21,4 +21,23 @@ array(2) {
     ["query"] =>
     string(12) "name=johndoe"
 }
+```
+
+
+### Securely Querying a Database with Placeholders
+
+Using placeholders in SQL queries is important for security reasons. It helps to protect the db from SQL injection attacks.
+
+```php
+// Retrieving the 'id' parameter from the URL (?id=2)
+$id = $_GET['id'];
+
+// Creating the query with a placeholder
+$query = "select * from posts where id = :id";
+
+// Executing the query and binding the placeholder with the actual value of $id.
+$posts = $db->query($query, [':id' => $id])->fetch();
+
+// Output the data
+dd($posts);
 ```
