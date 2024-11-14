@@ -29,7 +29,7 @@ class Database
         $statement->execute();
 
         // Fetch the results and remove duplicate array
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        return $statement;
     }
 }
 
@@ -37,6 +37,6 @@ class Database
 $db = new Database();
 
 // Calling the query method
-$posts = $db->query("select * from posts where id = 1");
+$posts = $db->query("select * from posts where id = 1")->fetch(PDO::FETCH_ASSOC);
 
 dd($posts);
